@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">BattleshipBeta</string>
+    <string name="action_settings">Settings</string>
+    <string name="btn">PLAY</string>
+    <string name="toptext">BATTLESHIP</string>
+    <string name="title_activity_gamescreen">GAMESCREEN</string>
+</resources>
