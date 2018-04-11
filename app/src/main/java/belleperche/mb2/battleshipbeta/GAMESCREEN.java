@@ -32,7 +32,7 @@ public class GAMESCREEN extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gamescreen);
-
+        // Association des ID boutons à des variables 
         bouton1 = (Button)findViewById(R.id.bouton1);
         bouton2 = (Button)findViewById(R.id.bouton2);
         bouton3 = (Button)findViewById(R.id.bouton3);
@@ -57,14 +57,16 @@ public class GAMESCREEN extends AppCompatActivity {
         bouton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mov == 0 )
+                // Placement bateau joueur 1
+                if (mov == 0 ) // Attente du placement total de bateau joueur 1
                 {
-                    if (mov2 == 0){
+                    // Placement bateau joueur 2
+                    if (mov2 == 0){ // Attente du placement total de bateau joueur 2
                         TIR(couleur1,couleurj1,bouton1,etat1,etatj1);
                         WIN(nbbateau,nbbateau2);
                     }
                     else if (couleurj1 == 0) {
-                        bouton1.setBackgroundColor(Color.YELLOW);
+                        bouton1.setBackgroundColor(Color.YELLOW); // La case ou le bateau est placé devient jaune
                         couleurj1++;
                         mov2--;
                         Mouvement(mov2);
@@ -74,11 +76,11 @@ public class GAMESCREEN extends AppCompatActivity {
                     Mouvement(mov2);}
                 }
                 else if(couleur1 == 0)
-                {bouton1.setBackgroundColor(Color.YELLOW);
+                {bouton1.setBackgroundColor(Color.YELLOW); // La case ou le bateau est placé devient jaune
                 couleur1++;
                 mov--;
                 Mouvement(mov);}
-                else {bouton1.setBackgroundColor(Color.BLUE);
+                else {bouton1.setBackgroundColor(Color.BLUE); // Si on souhaite changer de place, on rappuie et la case devient bleu
                 couleur1--;mov++;
                     Mouvement(mov);}
 
@@ -711,7 +713,7 @@ public class GAMESCREEN extends AppCompatActivity {
 
 
 
-    public void Mouvement(int youyou)
+    public void Mouvement(int youyou) // Affichage du nombre de mouvement restant
     {
         Context context = getApplicationContext();
         CharSequence text = "Mouvment(s)restant(s) :"+youyou;
@@ -720,7 +722,7 @@ public class GAMESCREEN extends AppCompatActivity {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();}
 
-    public void Joueur()
+    public void Joueur() // Affichage du joueur en train de jouer
     {
         Context context = getApplicationContext();
         CharSequence text = "JOUEUR :"+joueur;
@@ -730,7 +732,7 @@ public class GAMESCREEN extends AppCompatActivity {
         toast.show();
     }
 
-    public void TOUCHER(int nbbateau)
+    public void TOUCHER(int nbbateau) // Affichage de toucher si le bateau est décoouvert
     {
         Context context = getApplicationContext();
         CharSequence text = "TOUCHER :"+nbbateau;
@@ -739,15 +741,15 @@ public class GAMESCREEN extends AppCompatActivity {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();}
 
-    public void TIR(int couleur,int couleurj, Button nbbouton,int etat,int etatj){
+    public void TIR(int couleur,int couleurj, Button nbbouton,int etat,int etatj){ // Chaque joueur tir à son tour
 
-        if (joueur == 1) {
+        if (joueur == 1) { // le joueur 1 commence
             Joueur();
-            if (couleurj == 0) {
-                nbbouton.setBackgroundColor(Color.GRAY);
+            if (couleurj == 0) {// si on tire sur une case ou le bateau n'est pas
+                nbbouton.setBackgroundColor(Color.GRAY); // la case devient grise
                 joueur++;
-            } else {
-                nbbouton.setBackgroundColor(Color.RED);
+            } else { // il y a un bateau sur la case appuyée
+                nbbouton.setBackgroundColor(Color.RED); // la case devient rouge
                 nbbateau--;
                 TOUCHER(nbbateau);
                 joueur++;
@@ -755,7 +757,7 @@ public class GAMESCREEN extends AppCompatActivity {
             }
 
         }
-        else {
+        else { // de meme pour le joueur 2
             Joueur();
             if (couleur == 0){
                 nbbouton.setBackgroundColor(Color.GRAY);
@@ -772,7 +774,7 @@ public class GAMESCREEN extends AppCompatActivity {
         }
     }
 
-    public void WIN(int nbbateau,int nbbateau2){
+    public void WIN(int nbbateau,int nbbateau2){ // Quand il n'y a plus de bateau, le joueur(1 ou 2) gagne
         if (nbbateau == 0 || nbbateau2 == 0) {
             bouton1.setText("Y");
             bouton1.setTextColor(Color.WHITE);
