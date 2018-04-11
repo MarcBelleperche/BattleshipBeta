@@ -222,7 +222,21 @@
             android:background="@color/Casebleu"
             android:elevation="10dp"
             android:id="@+id/bouton16"/>
-        />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="150dp"
+            android:text="DONE"
+            android:id="@+id/DONE"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+            android:layout_marginTop="150dp"
+            android:text="FIN TIR"
+            android:id="@+id/TIR"/>
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
